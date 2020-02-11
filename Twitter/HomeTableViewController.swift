@@ -18,6 +18,11 @@ class HomeTableViewController: UITableViewController {
         loadTweets()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loadTweets()
+    }
+    
     
     func loadTweets() {
         
@@ -61,6 +66,7 @@ class HomeTableViewController: UITableViewController {
         
         cell.usernameLabel.text = (user["name"] as! String)
         cell.tweetContent.text = (tweet["text"] as! String)
+        cell.handelLabel.text = ("@" + (user["screen_name"] as! String))
         
         let imageURL = URL(string: (user["profile_image_url_https"] as? String)!)
         
@@ -69,6 +75,10 @@ class HomeTableViewController: UITableViewController {
         if let imageData = data {
             cell.profileImageView.image = UIImage(data: imageData)
         }
+        let maskView = UIView(frame: CGRect(x: 20, y: 0, width: 20, height: 20))
+        maskView.backgroundColor = .blue
+        maskView.layer.cornerRadius = 20
+        cell.imageView?.mask = maskView
         
         
         return cell
