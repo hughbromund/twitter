@@ -86,6 +86,10 @@ class HomeTableViewController: UITableViewController {
         
         cell.tweetID = tweet["id"] as! Int
         
+        let isRetweeted = tweet["retweeted"] as! Bool
+        
+        cell.setRetweet(isRetweeted)
+        
         return cell
     }
     
