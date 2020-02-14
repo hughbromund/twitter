@@ -80,6 +80,11 @@ class HomeTableViewController: UITableViewController {
         maskView.layer.cornerRadius = 20
         cell.imageView?.mask = maskView
         
+        let isFavorited = tweet["favorited"] as! Bool
+        
+        cell.setFavorite(isFavorited)
+        
+        cell.tweetID = tweet["id"] as! Int
         
         return cell
     }
